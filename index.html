@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ritika | COA Student Academic Dashboard - Chandigarh University">
+    <title>Ritika | COA Student Academic Dashboard</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (Vanilla SVG icons) & Main Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-badge">COA</div>
+                <div class="brand-text">
+                    <h2>Ritika</h2>
+                    <span>Student Dashboard</span>
+                </div>
+                <button class="mobile-close-btn" id="closeSidebarBtn" aria-label="Close Sidebar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <!-- Profile Widget in Sidebar -->
+            <div class="sidebar-profile-card" onclick="navigateTo('profile')">
+                <div class="avatar-container">
+                    <img src="assets/profile/profile.jpg" alt="Ritika" class="sidebar-avatar" onerror="this.src=''; this.parentElement.classList.add('avatar-fallback');">
+                    <div class="status-dot"></div>
+                </div>
+                <div class="profile-meta">
+                    <span class="profile-name">Ritika</span>
+                    <span class="profile-uid">UID: 25BAI10012</span>
+                    <span class="profile-sub">B.E. CSE (Microsoft AI)</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">MAIN MENU</div>
+                <button class="nav-item active" data-view="dashboard">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item" data-view="profile">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <span>My Profile</span>
+                </button>
+                <button class="nav-item" data-view="about">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <span>About Me</span>
+                </button>
+                <button class="nav-item" data-view="learning-lab">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h13l4-3.5L18 6z"></path><path d="M12 13v8"></path><path d="M8 21h8"></path></svg>
+                    <span>Learning Lab</span>
+                    <span class="badge-lab">COA</span>
+                </button>
+                <button class="nav-item" data-view="achievements">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                    <span>Achievements & Certs</span>
+                </button>
+                <button class="nav-item" data-view="assignments">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    <span>Assignments</span>
+                </button>
+                <button class="nav-item" data-view="projects">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    <span>Projects</span>
+                </button>
+                <button class="nav-item" data-view="cv">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span>My CV</span>
+                </button>
+
+                <div class="nav-divider"></div>
+                <div class="nav-section-label">SYSTEM</div>
+
+                <button class="nav-item" data-view="settings">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <span>Settings</span>
+                </button>
+                <button class="nav-item" data-view="help">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <span>Help & FAQs</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="academic-year-badge">
+                    <span class="dot"></span> 2025 – 2029 (1st Year)
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN LAYOUT -->
+        <div class="main-wrapper">
+            <!-- TOP HEADER -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open Navigation">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    </button>
+                    <div class="view-title-container">
+                        <h1 class="current-view-title" id="currentViewTitle">Dashboard</h1>
+                        <span class="view-subtitle" id="viewSubtitle">Academic Overview & Quick Stats</span>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <!-- Global Search Box -->
+                    <div class="global-search-wrapper">
+                        <div class="search-input-box">
+                            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <input type="text" id="globalSearchInput" placeholder="Search assignments, tools, certs..." autocomplete="off">
+                            <kbd class="search-kbd">/</kbd>
+                        </div>
+                        <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+                    </div>
+
+                    <!-- Theme Toggle Button -->
+                    <button class="icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+                        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+
+                    <!-- Notifications Dropdown Trigger -->
+                    <div class="notifications-wrapper">
+                        <button class="icon-btn notif-btn" id="notifBtn" title="Academic Notifications">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+                            <span class="notif-badge" id="notifBadge">3</span>
+                        </button>
+                        <div class="notif-dropdown" id="notifDropdown">
+                            <div class="notif-header">
+                                <h3>Notifications</h3>
+                                <button class="mark-read-btn" id="markAllReadBtn">Mark all as read</button>
+                            </div>
+                            <div class="notif-list" id="notifList">
+                                <!-- Populated dynamically by script.js -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile Pill Dropdown Trigger -->
+                    <div class="header-profile-wrapper">
+                        <button class="header-profile-btn" id="headerProfileBtn">
+                            <img src="assets/profile/profile.jpg" alt="Ritika" class="header-avatar" onerror="this.src=''; this.parentElement.classList.add('avatar-fallback');">
+                            <span class="header-user-name">Ritika</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="profile-dropdown-menu" id="profileDropdownMenu">
+                            <div class="dropdown-profile-header">
+                                <strong>Ritika</strong>
+                                <span>25BAI10012 &bull; Sec 25BAI-601</span>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item" onclick="navigateTo('profile')">View Profile</button>
+                            <button class="dropdown-item" onclick="navigateTo('cv')">View Curriculum Vitae</button>
+                            <button class="dropdown-item" onclick="navigateTo('settings')">Settings</button>
+                            <button class="dropdown-item" onclick="navigateTo('help')">Help & FAQ</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- MAIN VIEW CONTAINER -->
+            <main class="content-body" id="contentBody">
+
+                <!-- 1. DASHBOARD VIEW -->
+                <section class="view-panel active" id="view-dashboard">
+                    <!-- Welcome Hero Card -->
+                    <div class="welcome-banner">
+                        <div class="welcome-content">
+                            <div class="welcome-tag">COA ACADEMIC DASHBOARD</div>
+                            <h2 class="welcome-title">Good Morning, Ritika 👋</h2>
+                            <p class="welcome-desc">Welcome to your Computer Organization and Architecture academic management portal. Access verified academic credentials, COA tools, assignments, and performance insights.</p>
+                            <div class="welcome-actions">
+                                <button class="btn btn-primary" onclick="navigateTo('learning-lab')">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                    Launch COA Learning Lab
+                                </button>
+                                <button class="btn btn-secondary" onclick="navigateTo('assignments')">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                    View Assignments
+                                </button>
+                            </div>
+                        </div>
+                        <div class="welcome-badge-visual">
+                            <div class="univ-emblem">
+                                <span class="univ-short">CU</span>
+                                <span class="univ-badge-lbl">Chandigarh University</span>
+                                <span class="spec-badge">Microsoft AI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4 Statistics Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon-wrap icon-purple">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">STUDENT UID</span>
+                                <h3 class="stat-value" id="statUid">25BAI10012</h3>
+                                <span class="stat-meta">Section: 25BAI-601</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon-wrap icon-blue">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">ENROLLED COURSE</span>
+                                <h3 class="stat-value font-md" id="statCourse">B.E. CSE</h3>
+                                <span class="stat-meta">Specialization: Microsoft AI</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon-wrap icon-emerald">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">CURRENT SUBJECT</span>
+                                <h3 class="stat-value font-md" id="statSubject">COA</h3>
+                                <span class="stat-meta">Comp. Org. & Architecture</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon-wrap icon-amber">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-label">VERIFIED CERTIFICATES</span>
+                                <h3 class="stat-value" id="statCerts">4</h3>
+                                <span class="stat-meta">+ 11 MS Learn Badges</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Grid: Academic Activity Chart & Quick Tools -->
+                    <div class="dashboard-split-grid">
+                        <!-- Academic Activity Chart -->
+                        <div class="card chart-card">
+                            <div class="card-header">
+                                <div>
+                                    <h3 class="card-title">Academic Activity & Portfolio Progress</h3>
+                                    <span class="card-subtitle">Overview of completed assignments, certificates, and learning lab simulations</span>
+                                </div>
+                                <div class="chart-legend">
+                                    <span class="legend-item"><span class="legend-dot color-primary"></span> Activity Index</span>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <div class="custom-bar-chart" id="academicBarChart">
+                                    <!-- Dynamic Bar Chart elements -->
+                                </div>
+                            </div>
+                            <div class="chart-footer-note">
+                                <span>* Portfolio progression data derived from verified academic assignments, certifications, and labs.</span>
+                            </div>
+                        </div>
+
+                        <!-- Quick Learning Tools -->
+                        <div class="card quick-tools-card">
+                            <div class="card-header">
+                                <h3 class="card-title">Quick COA Tools</h3>
+                                <span class="card-subtitle">Instant interactive helpers</span>
+                            </div>
+                            <div class="quick-tools-list">
+                                <div class="tool-quick-item" onclick="navigateTo('learning-lab'); setConverterExample(25, '10', '2')">
+                                    <div class="tool-icon">🔢</div>
+                                    <div class="tool-details">
+                                        <h4>Number Base Converter</h4>
+                                        <p>Convert Decimal (25) &rarr; Binary (11001)</p>
+                                    </div>
+                                    <span class="tool-arrow">&rarr;</span>
+                                </div>
+                                <div class="tool-quick-item" onclick="navigateTo('learning-lab'); selectAddressCard('1')">
+                                    <div class="tool-icon">⚡</div>
+                                    <div class="tool-details">
+                                        <h4>1-Address Instruction</h4>
+                                        <p>Accumulator-based architecture (ADD A)</p>
+                                    </div>
+                                    <span class="tool-arrow">&rarr;</span>
+                                </div>
+                                <div class="tool-quick-item" onclick="navigateTo('learning-lab'); selectAddressCard('2')">
+                                    <div class="tool-icon">🔀</div>
+                                    <div class="tool-details">
+                                        <h4>2-Address Instruction</h4>
+                                        <p>Register-Memory format (ADD A, B)</p>
+                                    </div>
+                                    <span class="tool-arrow">&rarr;</span>
+                                </div>
+                                <div class="tool-quick-item" onclick="navigateTo('learning-lab'); selectAddressCard('3')">
+                                    <div class="tool-icon">🖥️</div>
+                                    <div class="tool-details">
+                                        <h4>3-Address Instruction</h4>
+                                        <p>Three-operand ALU format (ADD A, B, C)</p>
+                                    </div>
+                                    <span class="tool-arrow">&rarr;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity & Recent Assignments Grid -->
+                    <div class="dashboard-split-grid mt-4">
+                        <!-- Recent Activity Timeline -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Recent Academic Activity</h3>
+                                <span class="card-subtitle">Verified timeline milestones</span>
+                            </div>
+                            <div class="timeline" id="recentActivityTimeline">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Recent Assignments -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Recent Subject Assignments</h3>
+                                <button class="btn btn-sm btn-outline" onclick="navigateTo('assignments')">View All</button>
+                            </div>
+                            <div class="recent-assignments-list" id="dashboardAssignmentsList">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academic Interests Cards Preview -->
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Academic & Technical Interests</h3>
+                                <span class="card-subtitle">Areas of academic study and practical technical interest</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline" onclick="navigateTo('about')">Read More</button>
+                        </div>
+                        <div class="interests-grid" id="dashboardInterestsGrid">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. MY PROFILE VIEW -->
+                <section class="view-panel" id="view-profile">
+                    <div class="profile-layout-grid">
+                        <!-- Profile Card Left Column -->
+                        <div class="profile-main-card card">
+                            <div class="profile-hero-banner">
+                                <div class="profile-photo-container">
+                                    <img src="assets/profile/profile.jpg" alt="Ritika" class="profile-large-avatar" onerror="this.src=''; this.parentElement.classList.add('avatar-fallback');">
+                                </div>
+                            </div>
+                            <div class="profile-identity">
+                                <h2 class="profile-full-name">Ritika</h2>
+                                <span class="profile-title-pill">B.E. CSE &bull; Microsoft AI</span>
+                                <p class="profile-location-text">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    Jhajjar, Haryana &bull; Chandigarh University, Mohali
+                                </p>
+                            </div>
+
+                            <div class="profile-details-list">
+                                <div class="profile-detail-row">
+                                    <span class="detail-label">Student UID</span>
+                                    <span class="detail-val font-mono">25BAI10012</span>
+                                </div>
+                                <div class="profile-detail-row">
+                                    <span class="detail-label">Current Section</span>
+                                    <span class="detail-val">25BAI-601</span>
+                                </div>
+                                <div class="profile-detail-row">
+                                    <span class="detail-label">Academic Program</span>
+                                    <span class="detail-val">B.E. Computer Science & Engg.</span>
+                                </div>
+                                <div class="profile-detail-row">
+                                    <span class="detail-label">Specialization</span>
+                                    <span class="detail-val highlight-blue">Microsoft AI</span>
+                                </div>
+                                <div class="profile-detail-row">
+                                    <span class="detail-label">Subject Focus</span>
+                                    <span class="detail-val">Comp. Organization & Arch.</span>
+                                </div>
+                                <div class="profile-detail-row">
+                                    <span class="detail-label">University</span>
+                                    <span class="detail-val">Chandigarh University, Mohali</span>
+                                </div>
+                                <div class="profile-detail-row">
+                                    <span class="detail-label">Academic Duration</span>
+                                    <span class="detail-val">2025 – 2029</span>
+                                </div>
+                                <div class="profile-detail-row">
+                                    <span class="detail-label">First Year GPA</span>
+                                    <span class="detail-val font-bold text-emerald">7.84 GPA</span>
+                                </div>
+                                <div class="profile-detail-row">
+                                    <span class="detail-label">Official Email</span>
+                                    <span class="detail-val"><a href="mailto:ritikamajrad@gmail.com" class="link-blue">ritikamajrad@gmail.com</a></span>
+                                </div>
+                            </div>
+
+                            <div class="profile-actions-row">
+                                <a href="assets/cv/Ritika_Resume.pdf" target="_blank" class="btn btn-primary btn-block">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                    Open Official Resume PDF
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Profile Details Right Column -->
+                        <div class="profile-content-col">
+                            <!-- Academic Background Card -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h3 class="card-title">Academic Background & Qualifications</h3>
+                                    <span class="card-subtitle">Verified educational history from CV</span>
+                                </div>
+                                <div class="education-cards-list">
+                                    <div class="edu-item">
+                                        <div class="edu-year-pill">2025 – 2029</div>
+                                        <div class="edu-info">
+                                            <h4>B.E. – Computer Science and Engineering (Microsoft AI)</h4>
+                                            <p class="edu-inst">Chandigarh University, Mohali, Punjab</p>
+                                            <div class="edu-badge-score">GPA: <strong>7.84</strong> (1st Year)</div>
+                                        </div>
+                                    </div>
+                                    <div class="edu-item">
+                                        <div class="edu-year-pill">2024 – 2025</div>
+                                        <div class="edu-info">
+                                            <h4>Senior Secondary (Class XII) – HBSE</h4>
+                                            <p class="edu-inst">C.R. Sr. Sec. School, Jhajjar, Haryana</p>
+                                            <div class="edu-badge-score">Percentage: <strong>92.6%</strong></div>
+                                        </div>
+                                    </div>
+                                    <div class="edu-item">
+                                        <div class="edu-year-pill">2022 – 2023</div>
+                                        <div class="edu-info">
+                                            <h4>Matriculation (Class X) – HBSE</h4>
+                                            <p class="edu-inst">C.R. Sr. Sec. School, Jhajjar, Haryana</p>
+                                            <div class="edu-badge-score">Percentage: <strong>94.8%</strong></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Verified Skills from CV -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h3 class="card-title">Technical Competencies & Skills</h3>
+                                    <span class="card-subtitle">Core knowledge areas from verified profile</span>
+                                </div>
+                                <div class="skills-category-group">
+                                    <div class="skill-cat">
+                                        <div class="skill-cat-title">Technical Competencies</div>
+                                        <div class="skill-tags">
+                                            <span class="skill-pill">C</span>
+                                            <span class="skill-pill">C++</span>
+                                            <span class="skill-pill">Python</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-cat">
+                                        <div class="skill-cat-title">Core Concepts</div>
+                                        <div class="skill-tags">
+                                            <span class="skill-pill">Data Structures and Algorithms (DSA)</span>
+                                            <span class="skill-pill">Object-Oriented Programming (OOP)</span>
+                                            <span class="skill-pill">AI & Automation</span>
+                                            <span class="skill-pill">Computer Organization & Architecture</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-cat">
+                                        <div class="skill-cat-title">Tools & Platforms</div>
+                                        <div class="skill-tags">
+                                            <span class="skill-pill">Microsoft Azure</span>
+                                            <span class="skill-pill">GitHub</span>
+                                            <span class="skill-pill">GitHub Copilot</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill-cat">
+                                        <div class="skill-cat-title">Interpersonal & Professional Strengths</div>
+                                        <div class="skill-tags">
+                                            <span class="skill-pill">Teamwork</span>
+                                            <span class="skill-pill">Time Management</span>
+                                            <span class="skill-pill">Willingness to Learn</span>
+                                            <span class="skill-pill">Critical Thinking</span>
+                                            <span class="skill-pill">Problem Solving</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hobbies & Extracurriculars -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Hobbies & Extra-Curricular Pursuits</h3>
+                                    <span class="card-subtitle">Interests listed in CV</span>
+                                </div>
+                                <div class="hobbies-grid">
+                                    <div class="hobby-card">
+                                        <div class="hobby-icon">✈️</div>
+                                        <h4>Travelling</h4>
+                                        <p>Exploring new cultures, environments, and perspectives</p>
+                                    </div>
+                                    <div class="hobby-card">
+                                        <div class="hobby-icon">🏸</div>
+                                        <h4>Badminton</h4>
+                                        <p>Active sports engagement promoting agility and endurance</p>
+                                    </div>
+                                    <div class="hobby-card">
+                                        <div class="hobby-icon">🏃</div>
+                                        <h4>Athletics</h4>
+                                        <p>Discipline, fitness, and track physical activities</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. ABOUT ME VIEW -->
+                <section class="view-panel" id="view-about">
+                    <div class="about-grid">
+                        <!-- Introduction Card -->
+                        <div class="card about-intro-card">
+                            <div class="card-header">
+                                <div class="badge-tag">PROFILE OVERVIEW</div>
+                                <h2 class="card-title font-xl">About Ritika</h2>
+                                <span class="card-subtitle">B.E. Computer Science and Engineering (Microsoft AI)</span>
+                            </div>
+                            <div class="intro-body-text">
+                                <p>I am a highly motivated and adaptable Computer Science and Engineering (Microsoft AI) undergraduate at <strong>Chandigarh University, Mohali, Punjab</strong> (Academic Session 2025–2029, Section 25BAI-601). My academic curriculum integrates foundational computer science principles with specialized artificial intelligence and systems engineering.</p>
+                                <p>With strengths in communication, problem-solving, teamwork, rapid learning ability, and meticulous attention to detail, I focus on applying technical knowledge to create robust software systems, explore computer organization principles, and engineer intelligent computing solutions.</p>
+                            </div>
+                            <div class="quick-facts-row">
+                                <div class="fact-box">
+                                    <span class="fact-num">7.84</span>
+                                    <span class="fact-lbl">1st Year GPA</span>
+                                </div>
+                                <div class="fact-box">
+                                    <span class="fact-num">92.6%</span>
+                                    <span class="fact-lbl">Class XII (HBSE)</span>
+                                </div>
+                                <div class="fact-box">
+                                    <span class="fact-num">94.8%</span>
+                                    <span class="fact-lbl">Class X (HBSE)</span>
+                                </div>
+                                <div class="fact-box">
+                                    <span class="fact-num">11</span>
+                                    <span class="fact-lbl">MS Learn Badges</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Future Goals Card -->
+                        <div class="card future-goals-card">
+                            <div class="card-header">
+                                <div class="badge-tag tag-blue">CAREER OBJECTIVE</div>
+                                <h3 class="card-title">Future Goals & Aspirations</h3>
+                                <span class="card-subtitle">Professional direction derived from CV</span>
+                            </div>
+                            <div class="goals-list">
+                                <div class="goal-item">
+                                    <div class="goal-check">✓</div>
+                                    <div class="goal-text">
+                                        <strong>Apply Technical Knowledge:</strong> Implement computer science theory, AI models, and computer architecture insights into real-world software applications.
+                                    </div>
+                                </div>
+                                <div class="goal-item">
+                                    <div class="goal-check">✓</div>
+                                    <div class="goal-text">
+                                        <strong>Continuous Skill Enhancement:</strong> Deepen expertise across Data Structures, Algorithms, Cloud Computing (Azure), and modern AI pipelines.
+                                    </div>
+                                </div>
+                                <div class="goal-item">
+                                    <div class="goal-check">✓</div>
+                                    <div class="goal-text">
+                                        <strong>Solve Meaningful AI & Systems Problems:</strong> Work on impactful technology challenges addressing academic intelligence, system security, and automation.
+                                    </div>
+                                </div>
+                                <div class="goal-item">
+                                    <div class="goal-check">✓</div>
+                                    <div class="goal-text">
+                                        <strong>Collaborative Team Contribution:</strong> Contribute effectively in multidisciplinary teams, working both independently and collaboratively with high attention to detail.
+                                    </div>
+                                </div>
+                                <div class="goal-item">
+                                    <div class="goal-check">✓</div>
+                                    <div class="goal-text">
+                                        <strong>Strong Tech Career:</strong> Build a high-impact engineering career at the intersection of AI development, computer systems, and cloud computing.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Academic Interests Section -->
+                        <div class="card full-width-card">
+                            <div class="card-header">
+                                <h3 class="card-title">Academic & Technical Focus Areas</h3>
+                                <span class="card-subtitle">Verified core interest domains</span>
+                            </div>
+                            <div class="interests-grid" id="aboutInterestsGrid">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. LEARNING LAB (COA) VIEW -->
+                <section class="view-panel" id="view-learning-lab">
+                    <div class="lab-hero-banner">
+                        <div class="lab-title-group">
+                            <span class="lab-badge">INTERACTIVE COA SUITE</span>
+                            <h2>Computer Organization & Architecture Learning Lab</h2>
+                            <p>Real-time base conversions, instruction format simulators, and core architectural topic notes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Number System Converter Section -->
+                    <div class="card lab-tool-card mb-4">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Interactive Number System Converter</h3>
+                                <span class="card-subtitle">Supports full bidirectional conversion between Decimal, Binary, Octal, and Hexadecimal</span>
+                            </div>
+                            <div class="converter-badge-status" id="converterStatusBadge">Ready</div>
+                        </div>
+
+                        <div class="converter-box">
+                            <div class="converter-inputs-grid">
+                                <!-- Input Side -->
+                                <div class="converter-col">
+                                    <label for="converterInput" class="converter-label">Input Value</label>
+                                    <div class="input-with-select">
+                                        <input type="text" id="converterInput" class="code-input" placeholder="e.g. 25" value="25" spellcheck="false" autocomplete="off">
+                                        <select id="inputBaseSelect" class="base-select">
+                                            <option value="10" selected>Decimal (Base 10)</option>
+                                            <option value="2">Binary (Base 2)</option>
+                                            <option value="8">Octal (Base 8)</option>
+                                            <option value="16">Hexadecimal (Base 16)</option>
+                                        </select>
+                                    </div>
+                                    <div class="base-hint" id="inputBaseHint">Allowed characters: 0-9</div>
+                                </div>
+
+                                <!-- Swap / Action Controls -->
+                                <div class="converter-actions-center">
+                                    <button class="btn btn-icon-swap" id="swapBasesBtn" title="Swap Input & Output Bases">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+                                    </button>
+                                </div>
+
+                                <!-- Output Side -->
+                                <div class="converter-col">
+                                    <label for="converterOutput" class="converter-label">Converted Result</label>
+                                    <div class="input-with-select">
+                                        <input type="text" id="converterOutput" class="code-input output-field" readonly placeholder="Result will appear here...">
+                                        <select id="outputBaseSelect" class="base-select">
+                                            <option value="10">Decimal (Base 10)</option>
+                                            <option value="2" selected>Binary (Base 2)</option>
+                                            <option value="8">Octal (Base 8)</option>
+                                            <option value="16">Hexadecimal (Base 16)</option>
+                                        </select>
+                                    </div>
+                                    <div class="base-hint" id="outputBaseHint">Target Base: 2</div>
+                                </div>
+                            </div>
+
+                            <!-- Error Message Display -->
+                            <div class="converter-error" id="converterErrorMsg" style="display: none;"></div>
+
+                            <!-- Buttons Row -->
+                            <div class="converter-buttons-row">
+                                <div class="left-btns">
+                                    <button class="btn btn-primary" id="convertBtn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                                        CONVERT
+                                    </button>
+                                    <button class="btn btn-secondary" id="clearConverterBtn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                        CLEAR
+                                    </button>
+                                </div>
+
+                                <!-- Quick Examples -->
+                                <div class="quick-examples-group">
+                                    <span class="examples-label">Quick Examples:</span>
+                                    <button class="example-chip" onclick="setConverterExample('25', '10', '2')">25 &rarr; Binary</button>
+                                    <button class="example-chip" onclick="setConverterExample('1010', '2', '10')">1010 &rarr; Decimal</button>
+                                    <button class="example-chip" onclick="setConverterExample('77', '8', '2')">77 &rarr; Binary</button>
+                                    <button class="example-chip" onclick="setConverterExample('FF', '16', '10')">FF &rarr; Decimal</button>
+                                </div>
+                            </div>
+
+                            <!-- Conversion History -->
+                            <div class="converter-history-panel">
+                                <div class="history-header">
+                                    <h4>Recent Conversions (Session)</h4>
+                                    <button class="btn-text-sm" id="clearHistoryBtn">Clear History</button>
+                                </div>
+                                <div class="history-chips-container" id="historyChipsContainer">
+                                    <span class="no-history-text">No conversions performed yet in this session.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instruction Address Formats — Interactive Converter -->
+                    <div class="card lab-tool-card mb-4" id="addressConverterCard">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Address Format Converter / Generator</h3>
+                                <span class="card-subtitle">Enter an arithmetic expression and generate step-by-step instruction sequences for 1-Address, 2-Address, or 3-Address formats</span>
+                            </div>
+                            <div class="converter-badge-status" id="addrConverterStatus">Ready</div>
+                        </div>
+
+                        <!-- Format Selector + Input Section -->
+                        <div class="addr-converter-body">
+
+                            <!-- Row: Format dropdown -->
+                            <div class="addr-input-group">
+                                <label class="addr-label" for="addrFormatSelect">Select Address Format</label>
+                                <select id="addrFormatSelect" class="base-select addr-format-select">
+                                    <option value="1">1-Address (Accumulator-Based)</option>
+                                    <option value="2">2-Address (Dest, Source)</option>
+                                    <option value="3" selected>3-Address (Dest, Src1, Src2)</option>
+                                </select>
+                            </div>
+
+                            <!-- Expression Input -->
+                            <div class="addr-input-group">
+                                <label class="addr-label" for="addrExprInput">Enter Expression / Question</label>
+                                <textarea
+                                    id="addrExprInput"
+                                    class="addr-expr-textarea"
+                                    rows="3"
+                                    placeholder="Example: X = A + B * C"
+                                    spellcheck="false"
+                                    autocomplete="off"
+                                ></textarea>
+                                <div class="addr-error-msg" id="addrErrorMsg" style="display:none;"></div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="addr-action-row">
+                                <button class="btn btn-primary" id="addrGenerateBtn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                    GENERATE SOLUTION
+                                </button>
+                                <button class="btn btn-secondary" id="addrClearInputBtn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                    CLEAR
+                                </button>
+                            </div>
+
+                            <!-- Quick Examples -->
+                            <div class="addr-quick-examples">
+                                <span class="examples-label">QUICK EXAMPLES:</span>
+                                <div class="addr-examples-chips">
+                                    <button class="example-chip" onclick="setAddrExample('X = A + B')">X = A + B</button>
+                                    <button class="example-chip" onclick="setAddrExample('X = A + B * C')">X = A + B * C</button>
+                                    <button class="example-chip" onclick="setAddrExample('X = (A + B) * C')">X = (A + B) * C</button>
+                                    <button class="example-chip" onclick="setAddrExample('X = A * B + C * D')">X = A * B + C * D</button>
+                                    <button class="example-chip" onclick="setAddrExample('X = (A + B) * (C - D)')">X = (A + B) * (C - D)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Result Panel (hidden until Generate is clicked) -->
+                        <div class="addr-result-panel" id="addrResultPanel" style="display:none;">
+                            <div class="addr-result-header">
+                                <span class="addr-result-title-badge" id="addrResultBadge">3-ADDRESS RESULT</span>
+                                <div class="addr-result-actions">
+                                    <button class="btn btn-sm btn-outline" id="addrCopyBtn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                        COPY RESULT
+                                    </button>
+                                    <button class="btn btn-sm btn-secondary" id="addrClearResultBtn">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path></svg>
+                                        CLEAR RESULT
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Result Body: populated dynamically -->
+                            <div id="addrResultBody"></div>
+                        </div>
+
+                        <!-- Instruction Format Comparison Table -->
+                        <div class="comparison-table-wrapper mt-4">
+                            <h4 class="table-section-title">Comparative Analysis of Address Formats</h4>
+                            <div class="table-responsive">
+                                <table class="academic-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Feature</th>
+                                            <th>1-Address Format</th>
+                                            <th>2-Address Format</th>
+                                            <th>3-Address Format</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Address Fields</strong></td>
+                                            <td>1 Address field</td>
+                                            <td>2 Address fields</td>
+                                            <td>3 Address fields</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Syntax Example</strong></td>
+                                            <td><code class="code-pill">ADD A</code></td>
+                                            <td><code class="code-pill">ADD A, B</code></td>
+                                            <td><code class="code-pill">ADD A, B, C</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Internal Meaning</strong></td>
+                                            <td><code>AC &larr; AC + M[A]</code></td>
+                                            <td><code>R1 &larr; R1 + R2</code> or <code>M[A] &larr; M[A] + M[B]</code></td>
+                                            <td><code>R1 &larr; R2 + R3</code> or <code>M[A] &larr; M[B] + M[C]</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Register Reliance</strong></td>
+                                            <td>Implicit Accumulator (AC) register</td>
+                                            <td>General purpose registers / Memory</td>
+                                            <td>General purpose registers</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Instruction Length</strong></td>
+                                            <td>Shortest instruction word size</td>
+                                            <td>Moderate instruction word length</td>
+                                            <td>Longest instruction word size</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Program Size (Lines)</strong></td>
+                                            <td>More instructions required for complex arithmetic</td>
+                                            <td>Moderate number of instructions</td>
+                                            <td>Fewest instructions needed in program</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Key Advantages</strong></td>
+                                            <td>Minimal bit overhead per instruction word; simple hardware decoding.</td>
+                                            <td>Good balance between program length and instruction bit width.</td>
+                                            <td>Preserves source operands; high execution throughput; clean math translation.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Key Disadvantages</strong></td>
+                                            <td>Requires extensive accumulator data movement; higher instruction count.</td>
+                                            <td>Overwrites original contents of destination register or memory location.</td>
+                                            <td>Requires large opcode/address bit fields; more complex decoding hardware.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- COA Quick Notes (Expandable Topic Cards) -->
+                    <div class="card lab-tool-card">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">COA Quick Study Notes</h3>
+                                <span class="card-subtitle">Key Computer Organization & Architecture fundamentals and processor concepts</span>
+                            </div>
+                        </div>
+                        <div class="coa-topics-accordion" id="coaTopicsAccordion">
+                            <!-- Populated dynamically by script.js -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. ACHIEVEMENTS & CERTIFICATIONS VIEW -->
+                <section class="view-panel" id="view-achievements">
+                    <!-- Achievements Highlights -->
+                    <div class="achieve-stats-row mb-4">
+                        <div class="achieve-summary-box">
+                            <div class="achieve-icon">🏆</div>
+                            <div class="achieve-summary-text">
+                                <h3>Verified Certifications</h3>
+                                <p>4 University & Industry accredited certifications in Cloud, AI, and Research.</p>
+                            </div>
+                        </div>
+                        <div class="achieve-summary-box">
+                            <div class="achieve-icon">⭐</div>
+                            <div class="achieve-summary-text">
+                                <h3>11 Microsoft Learn Badges</h3>
+                                <p>Earned across Azure Cloud fundamentals, AI modules, and computing pathways.</p>
+                            </div>
+                        </div>
+                        <div class="achieve-summary-box">
+                            <div class="achieve-icon">🎓</div>
+                            <div class="achieve-summary-text">
+                                <h3>Academic Track Record</h3>
+                                <p>Consistently strong academic performance: GPA 7.84, Class XII 92.6%, Class X 94.8%.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="card-title">Certification Gallery</h3>
+                                <span class="card-subtitle">Click "View Certificate" to open verified certificate viewer or download PDF</span>
+                            </div>
+                            <a href="assets/certificates/all_certificates.pdf" target="_blank" class="btn btn-sm btn-outline">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                                View Merged Certificates PDF
+                            </a>
+                        </div>
+                        <div class="cert-cards-grid" id="certsGrid">
+                            <!-- Populated dynamically by script.js -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. ASSIGNMENTS VIEW -->
+                <section class="view-panel" id="view-assignments">
+                    <div class="card mb-4">
+                        <div class="assignments-header-wrapper">
+                            <div>
+                                <h2 class="card-title font-xl">COA Assignment Submission</h2>
+                                <span class="card-subtitle">Verified coursework submission for Computer Organization and Architecture (Submitted to Dr. Ruchika Gupta)</span>
+                            </div>
+                        </div>
+
+                        <!-- Search and Filter Bar -->
+                        <div class="assignment-controls-bar">
+                            <div class="assignment-search-box">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                <input type="text" id="assignmentSearchInput" placeholder="Search Assignment-1 (e.g. 'Raspberry Pi', 'GPU', 'Turing', 'RAM')...">
+                                <button class="clear-search-btn" id="clearAssignmentSearchBtn" style="display:none;">&times;</button>
+                            </div>
+
+                            <div class="filter-controls-group">
+                                <div class="filter-group">
+                                    <span class="filter-label">Subject:</span>
+                                    <button class="filter-chip active" data-filter-subject="all">All</button>
+                                    <button class="filter-chip" data-filter-subject="COA">COA</button>
+                                    <button class="filter-chip" data-filter-subject="Other">Other Academic</button>
+                                </div>
+                                <div class="filter-group">
+                                    <span class="filter-label">Status:</span>
+                                    <button class="filter-chip active" data-filter-status="all">All</button>
+                                    <button class="filter-chip" data-filter-status="available">Available</button>
+                                    <button class="filter-chip" data-filter-status="pending">Not Uploaded</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Assignment Cards Grid / Table -->
+                        <div class="assignments-list-container" id="assignmentsListContainer">
+                            <!-- Populated dynamically by script.js -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. PROJECTS VIEW -->
+                <section class="view-panel" id="view-projects">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <div>
+                                <h2 class="card-title font-xl">Academic & Technical Projects</h2>
+                                <span class="card-subtitle">Verified software systems engineered by Ritika as documented in CV</span>
+                            </div>
+                        </div>
+                        <div class="projects-container" id="projectsContainer">
+                            <!-- Populated dynamically by script.js -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 8. MY CV VIEW -->
+                <section class="view-panel" id="view-cv">
+                    <div class="cv-page-card card">
+                        <div class="cv-header-banner">
+                            <div class="cv-header-info">
+                                <span class="cv-badge">OFFICIAL RESUME</span>
+                                <h2 class="cv-user-name">Ritika</h2>
+                                <p class="cv-user-sub">B.E. Computer Science and Engineering &bull; Specialization in Microsoft AI</p>
+                                <p class="cv-user-details">Chandigarh University, Mohali &bull; ritikamajrad@gmail.com</p>
+                            </div>
+                            <div class="cv-action-buttons">
+                                <a href="assets/cv/Ritika_Resume.pdf" target="_blank" class="btn btn-primary" id="viewCvPdfBtn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                    VIEW CV (PDF)
+                                </a>
+                                <a href="assets/cv/Ritika_Resume.pdf" download="Ritika_Resume.pdf" class="btn btn-secondary" id="downloadCvPdfBtn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                    DOWNLOAD CV
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Embedded CV Preview Frame -->
+                        <div class="cv-viewer-container">
+                            <div class="cv-viewer-toolbar">
+                                <span>Preview: assets/cv/Ritika_Resume.pdf</span>
+                                <a href="assets/cv/Ritika_Resume.pdf" target="_blank" class="link-blue text-sm">Open in new window &rarr;</a>
+                            </div>
+                            <iframe src="assets/cv/Ritika_Resume.pdf#toolbar=1" class="cv-iframe" title="Ritika Resume PDF Viewer"></iframe>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 9. SETTINGS VIEW -->
+                <section class="view-panel" id="view-settings">
+                    <div class="card max-w-700">
+                        <div class="card-header">
+                            <h2 class="card-title font-xl">Dashboard Settings & Preferences</h2>
+                            <span class="card-subtitle">Customize application theme and appearance preferences</span>
+                        </div>
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Theme Appearance</h4>
+                                    <p>Select between Dark and Light user interface modes.</p>
+                                </div>
+                                <div class="theme-switch-group">
+                                    <button class="theme-choice-btn" data-set-theme="dark" id="themeDarkChoice">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                                        Dark Mode
+                                    </button>
+                                    <button class="theme-choice-btn" data-set-theme="light" id="themeLightChoice">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                                        Light Mode
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Reduce Motion & Animations</h4>
+                                    <p>Disable transitions and chart animations for high-efficiency rendering.</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="reduceMotionToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Default Landing View</h4>
+                                    <p>The first page displayed when opening the dashboard application.</p>
+                                </div>
+                                <select id="defaultLandingSelect" class="base-select">
+                                    <option value="dashboard" selected>Dashboard (Overview)</option>
+                                    <option value="learning-lab">Learning Lab (COA Suite)</option>
+                                    <option value="assignments">Assignments</option>
+                                    <option value="achievements">Achievements & Certs</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 10. HELP & FAQ VIEW -->
+                <section class="view-panel" id="view-help">
+                    <div class="card max-w-800">
+                        <div class="card-header">
+                            <h2 class="card-title font-xl">Help Center & Frequently Asked Questions</h2>
+                            <span class="card-subtitle">User guide for the COA Student Academic Dashboard</span>
+                        </div>
+                        <div class="faq-accordion" id="faqAccordion">
+                            <!-- Accordion populated dynamically by script.js -->
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- CERTIFICATE VIEW MODAL / LIGHTBOX -->
+    <div class="modal-overlay" id="certModal" style="display: none;">
+        <div class="modal-content-card">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title" id="modalCertTitle">Certificate Viewer</h3>
+                    <span class="modal-subtitle" id="modalCertOrg">Organization</span>
+                </div>
+                <button class="modal-close-btn" id="closeCertModalBtn" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalCertBody">
+                <!-- Preview image or iframe -->
+            </div>
+            <div class="modal-footer">
+                <a href="#" target="_blank" class="btn btn-primary" id="modalPdfOpenBtn">Open Full Document</a>
+                <a href="#" download class="btn btn-secondary" id="modalPdfDownloadBtn">Download PDF</a>
+                <button class="btn btn-outline" id="modalDismissBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GENERIC ALERT TOAST -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
