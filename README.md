@@ -1,7 +1,7 @@
 # Ritika | COA Student Academic Dashboard
 
 A modern, responsive, and interactive Student Academic Management Dashboard designed for **Computer Organization and Architecture (COA)** at **Chandigarh University, Mohali, Punjab**.
-
+This is the link for Website : https://ritikacoaportfolio.vercel.app/?utm_source=chatgpt.com
 ---
 
 ## 📌 Student Details (Verified Source of Truth)
